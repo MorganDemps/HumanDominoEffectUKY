@@ -1,0 +1,334 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://sprites/pond/pond.png" type="Texture" id=1]
+[ext_resource path="res://sprites/pond/r_ring.png" type="Texture" id=2]
+[ext_resource path="res://sprites/pond/y_ring.png" type="Texture" id=3]
+[ext_resource path="res://sprites/pond/b_ring.png" type="Texture" id=4]
+[ext_resource path="res://levels/Stone.gd" type="Script" id=5]
+[ext_resource path="res://sprites/pond/stone.png" type="Texture" id=6]
+[ext_resource path="res://levels/Pond.gd" type="Script" id=7]
+[ext_resource path="res://Nunito/Nunito-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Character Bubble.tscn" type="PackedScene" id=9]
+[ext_resource path="res://audio/effects/select.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/effects/back.wav" type="AudioStream" id=11]
+[ext_resource path="res://levels/World.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/pond/r_stone.png" type="Texture" id=13]
+[ext_resource path="res://sprites/pond/br_stone.png" type="Texture" id=14]
+[ext_resource path="res://sprites/pond/ybr_stone.png" type="Texture" id=15]
+[ext_resource path="res://sprites/pond/yr_stone.png" type="Texture" id=16]
+[ext_resource path="res://sprites/pond/yb_stone.png" type="Texture" id=17]
+[ext_resource path="res://sprites/pond/y_stone.png" type="Texture" id=18]
+[ext_resource path="res://sprites/pond/b_stone.png" type="Texture" id=19]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 900.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 900.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 900.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 350.0
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 350.0
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 350.0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 300.0
+
+[sub_resource type="DynamicFont" id=8]
+size = 130
+font_data = ExtResource( 8 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "b",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "y",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "r",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "yr",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "br",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "ybr",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "yb",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 112.0
+height = 144.0
+
+[sub_resource type="DynamicFont" id=11]
+size = 100
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 80
+font_data = ExtResource( 8 )
+
+[node name="Pond" type="Node2D"]
+script = ExtResource( 7 )
+next_scene = ExtResource( 12 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 5, 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b_ring" type="Sprite" parent="."]
+position = Vector2( -500, 500 )
+scale = Vector2( 1.35, 1.35 )
+texture = ExtResource( 4 )
+
+[node name="r_ring" type="Sprite" parent="."]
+position = Vector2( 500, 500 )
+scale = Vector2( 1.35, 1.35 )
+texture = ExtResource( 2 )
+
+[node name="y_ring" type="Sprite" parent="."]
+position = Vector2( 0, -500 )
+scale = Vector2( 1.35, 1.35 )
+texture = ExtResource( 3 )
+
+[node name="y_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_area"]
+position = Vector2( 0, -488 )
+shape = SubResource( 1 )
+
+[node name="b_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="b_area"]
+position = Vector2( -536, 520 )
+shape = SubResource( 2 )
+
+[node name="r_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="r_area"]
+position = Vector2( 496, 520 )
+shape = SubResource( 3 )
+
+[node name="yb_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="yb_area"]
+position = Vector2( -448, -56 )
+shape = SubResource( 4 )
+
+[node name="yr_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="yr_area"]
+position = Vector2( 416, -88 )
+shape = SubResource( 5 )
+
+[node name="br_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="br_area"]
+position = Vector2( 0, 776 )
+shape = SubResource( 6 )
+
+[node name="ybr_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ybr_area"]
+position = Vector2( 0, 80 )
+shape = SubResource( 7 )
+
+[node name="Choice" type="Label" parent="."]
+margin_left = -2456.0
+margin_top = -1336.0
+margin_right = -1627.0
+margin_bottom = -1158.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Yellow Choice"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="Label" parent="."]
+margin_left = -200.0
+margin_top = -912.0
+margin_right = 224.0
+margin_bottom = -734.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Yellow"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Liberty" type="Label" parent="."]
+margin_left = -1040.0
+margin_top = 600.0
+margin_right = -624.0
+margin_bottom = 778.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Blue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Happiness" type="Label" parent="."]
+margin_left = 504.0
+margin_top = 600.0
+margin_right = 1123.0
+margin_bottom = 778.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Red"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Correct" type="Label" parent="."]
+margin_left = 1568.0
+margin_top = 352.0
+margin_right = 2397.0
+margin_bottom = 530.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Correct:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Correct_num" type="Label" parent="."]
+margin_left = 2048.0
+margin_top = 360.0
+margin_right = 2352.0
+margin_bottom = 538.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Indicator" type="Label" parent="."]
+margin_left = 1544.0
+margin_top = 688.0
+margin_right = 2473.0
+margin_bottom = 1047.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Make some
+healthy choices!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Character" parent="." instance=ExtResource( 9 )]
+visible = false
+position = Vector2( -1934.5, 16.0002 )
+scale = Vector2( 5, 5 )
+
+[node name="Stone" type="Area2D" parent="."]
+scale = Vector2( 2.5, 2.5 )
+script = ExtResource( 5 )
+
+[node name="stone" type="AnimatedSprite" parent="Stone"]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 9 )
+animation = "br"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stone"]
+position = Vector2( 6, 0 )
+rotation = 1.57079
+shape = SubResource( 10 )
+
+[node name="Popup" type="PopupDialog" parent="."]
+visible = true
+margin_left = -837.0
+margin_top = -568.0
+margin_right = 900.0
+margin_bottom = 528.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Popup"]
+margin_left = 109.0
+margin_top = 200.0
+margin_right = 1637.0
+margin_bottom = 680.0
+custom_fonts/normal_font = SubResource( 11 )
+text = "Excellent work! Now, you must make choices that promote health, liberty, and happiness."
+
+[node name="Button" type="Button" parent="Popup"]
+margin_left = 581.0
+margin_top = 888.0
+margin_right = 1093.0
+margin_bottom = 1012.0
+custom_fonts/font = SubResource( 12 )
+text = "Let's Go!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="IncorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -10.0
+[connection signal="input_event" from="y_area" to="." method="_on_y_area_input_event"]
+[connection signal="mouse_entered" from="y_area" to="." method="_on_y_area_mouse_entered"]
+[connection signal="mouse_exited" from="y_area" to="." method="_on_y_area_mouse_exited"]
+[connection signal="input_event" from="b_area" to="." method="_on_b_area_input_event"]
+[connection signal="mouse_entered" from="b_area" to="." method="_on_b_area_mouse_entered"]
+[connection signal="mouse_exited" from="b_area" to="." method="_on_b_area_mouse_exited"]
+[connection signal="input_event" from="r_area" to="." method="_on_r_area_input_event"]
+[connection signal="mouse_entered" from="r_area" to="." method="_on_r_area_mouse_entered"]
+[connection signal="mouse_exited" from="r_area" to="." method="_on_r_area_mouse_exited"]
+[connection signal="input_event" from="yb_area" to="." method="_on_yb_area_input_event"]
+[connection signal="input_event" from="yr_area" to="." method="_on_yr_area_input_event"]
+[connection signal="input_event" from="br_area" to="." method="_on_br_area_input_event"]
+[connection signal="input_event" from="ybr_area" to="." method="_on_ybr_area_input_event"]
+[connection signal="pressed" from="Popup/Button" to="." method="_on_Button_pressed"]

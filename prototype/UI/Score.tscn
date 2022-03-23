@@ -1,0 +1,243 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Nunito/Nunito-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/Button.gd" type="Script" id=2]
+[ext_resource path="res://UI/Dismiss.gd" type="Script" id=3]
+[ext_resource path="res://sprites/character_sprites/faces/0.png" type="Texture" id=4]
+[ext_resource path="res://StaticElcitrap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/speech_bubble.png" type="Texture" id=6]
+[ext_resource path="res://sprites/character_sprites/bodies/0.png" type="Texture" id=7]
+[ext_resource path="res://sprites/character_sprites/hair/0.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 483, 353 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 1 )
+
+[node name="Score" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_right = 192.0
+margin_bottom = 47.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Button"]
+margin_left = 8.0
+margin_right = 100.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 1 )
+text = "Points:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Points" type="Label" parent="Button"]
+margin_left = 104.0
+margin_top = 2.0
+margin_right = 144.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupDialog" type="PopupDialog" parent="Button"]
+visible = true
+self_modulate = Color( 1, 1, 1, 0.94902 )
+margin_left = -320.0
+margin_top = -224.0
+margin_right = 256.0
+margin_bottom = 256.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name_label" type="Label" parent="Button/PopupDialog"]
+margin_left = 112.0
+margin_top = 32.0
+margin_right = 176.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 88, 61 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name_text" type="Label" parent="Button/PopupDialog"]
+margin_left = 176.0
+margin_top = 32.0
+margin_right = 280.0
+margin_bottom = 61.0
+rect_pivot_offset = Vector2( 88, 61 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Alloy_label" type="Label" parent="Button/PopupDialog"]
+margin_left = 344.0
+margin_top = 32.0
+margin_right = 496.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 88, 61 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Alloys:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Alloy_number" type="Label" parent="Button/PopupDialog"]
+margin_left = 504.0
+margin_top = 32.0
+margin_right = 544.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Footprint_label" type="Label" parent="Button/PopupDialog"]
+margin_left = 344.0
+margin_top = 136.0
+margin_right = 496.0
+margin_bottom = 168.0
+rect_pivot_offset = Vector2( 88, 61 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Footprint Tiles:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Footprint_number" type="Label" parent="Button/PopupDialog"]
+margin_left = 504.0
+margin_top = 136.0
+margin_right = 544.0
+margin_bottom = 165.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wellness_label" type="Label" parent="Button/PopupDialog"]
+margin_left = 344.0
+margin_top = 240.0
+margin_right = 496.0
+margin_bottom = 272.0
+rect_pivot_offset = Vector2( 88, 61 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Wellness Beads:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wellness_number" type="Label" parent="Button/PopupDialog"]
+margin_left = 504.0
+margin_top = 240.0
+margin_right = 544.0
+margin_bottom = 269.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lydia_label" type="Label" parent="Button/PopupDialog"]
+margin_left = 299.0
+margin_top = 343.0
+margin_right = 508.0
+margin_bottom = 372.0
+rect_pivot_offset = Vector2( 88, 61 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Total Lydia Lion Coins: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lydia_number" type="Label" parent="Button/PopupDialog"]
+margin_left = 504.0
+margin_top = 344.0
+margin_right = 544.0
+margin_bottom = 373.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Button/PopupDialog"]
+visible = false
+margin_left = 224.0
+margin_top = 280.0
+margin_right = 288.0
+margin_bottom = 304.0
+text = "OK"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="body" type="Sprite" parent="Button/PopupDialog"]
+position = Vector2( 199.4, 191 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 7 )
+
+[node name="face" type="Sprite" parent="Button/PopupDialog"]
+position = Vector2( 199, 100.2 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+
+[node name="hair" type="Sprite" parent="Button/PopupDialog"]
+position = Vector2( 199, 92.2 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 8 )
+
+[node name="elcitrap0" parent="Button/PopupDialog" instance=ExtResource( 5 )]
+position = Vector2( 140, 298 )
+
+[node name="elcitrap1" parent="Button/PopupDialog" instance=ExtResource( 5 )]
+position = Vector2( 204, 298 )
+
+[node name="elcitrap2" parent="Button/PopupDialog" instance=ExtResource( 5 )]
+position = Vector2( 268, 298 )
+
+[node name="elcitrap3" parent="Button/PopupDialog" instance=ExtResource( 5 )]
+position = Vector2( 171, 357 )
+
+[node name="elcitrap4" parent="Button/PopupDialog" instance=ExtResource( 5 )]
+position = Vector2( 237, 357 )
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Button/PopupDialog/Button" to="Button/PopupDialog/Button" method="_on_Button_pressed"]

@@ -1,0 +1,99 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://sprites/elcitrap_b.png" type="Texture" id=1]
+[ext_resource path="res://Elcitrap1.gd" type="Script" id=2]
+[ext_resource path="res://sprites/red_wave2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/elcitrap_g.png" type="Texture" id=4]
+[ext_resource path="res://sprites/red_wave1.png" type="Texture" id=5]
+[ext_resource path="res://sprites/red_wave4.png" type="Texture" id=6]
+[ext_resource path="res://sprites/red_wave3.png" type="Texture" id=7]
+[ext_resource path="res://sprites/elcitrap_r.png" type="Texture" id=8]
+[ext_resource path="res://sprites/blue_wave1.png" type="Texture" id=9]
+[ext_resource path="res://sprites/blue_wave2.png" type="Texture" id=10]
+[ext_resource path="res://sprites/blue_wave3.png" type="Texture" id=11]
+[ext_resource path="res://sprites/green_wave3.png" type="Texture" id=12]
+[ext_resource path="res://sprites/blue_wave4.png" type="Texture" id=13]
+[ext_resource path="res://sprites/green_wave1.png" type="Texture" id=14]
+[ext_resource path="res://sprites/green_wave2.png" type="Texture" id=15]
+[ext_resource path="res://sprites/green_wave4.png" type="Texture" id=16]
+[ext_resource path="res://Nunito/Nunito-Regular.ttf" type="DynamicFontData" id=17]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "blue",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 12 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "green",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "red",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "static_blue",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "static_red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "static_green",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 25.1859
+height = 181.983
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 17 )
+
+[node name="Elcitrap1" type="RigidBody2D"]
+input_pickable = true
+collision_layer = 2
+gravity_scale = 0.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+min_speed = 300
+max_speed = 400
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.6, 0.3 )
+frames = SubResource( 1 )
+animation = "static_green"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57079
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 1.18501, 2.04959 )
+scale = Vector2( 1.44224, 1.42331 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -24.0
+margin_top = -8.0
+margin_right = 24.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="." to="." method="_on_Elcitrap1_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_Elcitrap1_body_shape_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_Elcitrap1_mouse_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

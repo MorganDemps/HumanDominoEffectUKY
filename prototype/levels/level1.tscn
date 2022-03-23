@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/level1background_darken.png" type="Texture" id=1]
+[ext_resource path="res://Oauabae.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level1.gd" type="Script" id=3]
+[ext_resource path="res://Elcitrap1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/level1_cont.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Narration.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1024, 0, 0, 0, 0, 0, 1024, 600, 0, 0, 0, 0, 0, 600, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="level1" type="Node"]
+script = ExtResource( 3 )
+Elcitrap = ExtResource( 4 )
+next_scene = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Oauabae" parent="." instance=ExtResource( 2 )]
+
+[node name="EPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="EPathFollow" type="PathFollow2D" parent="EPath"]
+
+[node name="ElcitrapTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="Narration" parent="." instance=ExtResource( 6 )]
+[connection signal="timeout" from="ElcitrapTimer" to="." method="_on_ElcitrapTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]
+[connection signal="animation_finished" from="Narration/TextAnimationPlayer" to="." method="_on_TextAnimationPlayer_animation_finished"]
+
+[editable path="Narration"]

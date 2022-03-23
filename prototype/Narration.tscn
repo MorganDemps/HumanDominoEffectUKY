@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Nunito/Nunito-Regular.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=4]
+size = 33
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Reveal"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8, 10, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0, 0.0 ]
+}
+
+[node name="Narration" type="RichTextLabel"]
+margin_left = 248.0
+margin_top = 352.0
+margin_right = 768.0
+margin_bottom = 592.0
+custom_fonts/normal_font = SubResource( 4 )
+visible_characters = 0
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Reveal = SubResource( 5 )
