@@ -18,7 +18,7 @@ var narration_count = 0
 
 func _ready() -> void:
 	$Oauabae/AnimatedSprite.animation = "default"
-	$Narration.text = "The magnifying glass you're controlling is you.                            Well, it's your you for this game."
+	$Narration.text = "The magnifying glass you're controlling is you. Well, it's your you for this game."
 	$Narration/TextAnimationPlayer.play("Reveal")
 	
 	get_parent().get_node("AudioStreamPlayer").stream = load("res://audio/background/quantum.ogg")
