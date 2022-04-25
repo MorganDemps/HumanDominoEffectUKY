@@ -98,3 +98,6 @@ func _on_TextAnimationPlayer_animation_finished(anim_name: String) -> void:
 		$Narration.text = narration_text[narration_count]
 		$Narration/TextAnimationPlayer.play("Reveal", -1, 1.5)
 		narration_count += 1
+		$hair.visible = false
+		$Speech.visible = false
+		
